@@ -24,7 +24,7 @@ String buildCode(String className, String familyName, List<Glyphs> list) {
   for (final g in list) {
     buffer
       ..write(indent)
-      ..writeln('static const ${g.fontClass} = IconData(${g.uniCodeName},fontFamily:_family);');
+      ..writeln('static const IconData ${g.fontClass} = IconData(${g.uniCodeName},fontFamily:_family);');
   }
 
   buffer.writeln('}');
