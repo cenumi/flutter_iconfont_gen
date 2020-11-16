@@ -7,7 +7,8 @@ void buildFile(Config config, String content) {
   file.writeAsStringSync(content);
 }
 
-String buildCode(String className, String familyName, List<Glyphs> list) {
+String buildCode(
+    String className, String familyName, String package, List<Glyphs> list) {
   final indent = '  ';
   final buffer = StringBuffer("import 'package:flutter/widgets.dart';");
   buffer
@@ -18,13 +19,16 @@ String buildCode(String className, String familyName, List<Glyphs> list) {
     ..writeln('$className._();')
     ..writeln()
     ..write(indent)
-    ..writeln("static const String _family = '$familyName';")
+    ..writeln('static const String _family = familyName;')
+    ..writeln()
+    ..writeln('static const String _package = $package;')
     ..writeln();
 
   for (final g in list) {
     buffer
       ..write(indent)
-      ..writeln('static const IconData ${g.fontClass} = IconData(${g.uniCodeName},fontFamily:_family);');
+      ..writeln(
+          'static const IconData ${g.fontClass} = IconData(${g.uniCodeName},fontFamily: _family,fontPackage: _package);');
   }
 
   buffer.writeln('}');

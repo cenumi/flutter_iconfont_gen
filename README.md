@@ -17,6 +17,7 @@ iconfont_gen:
   out_path: gen/
   class_name: AssetIcons
   font_family: AssetIcons
+  package: null
 
 
 flutter: 

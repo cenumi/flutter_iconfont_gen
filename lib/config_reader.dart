@@ -20,13 +20,17 @@ class Config {
   String className = 'AssetIcons';
   String fontPath;
   String familyName = 'AssetIcons';
+  String package;
 }
 
 List<Glyphs> readGlyphsConfig(String fontPath, String jsonName) {
-  final file = File((fontPath.split('/')..removeLast()).join('/') + '/$jsonName');
+  final file =
+      File((fontPath.split('/')..removeLast()).join('/') + '/$jsonName');
   final content = json.decode(file.readAsStringSync());
   final list = content['glyphs'];
-  return list.map<Glyphs>((e) => Glyphs(e['unicode'], e['name'], e['font_class'])).toList();
+  return list
+      .map<Glyphs>((e) => Glyphs(e['unicode'], e['name'], e['font_class']))
+      .toList();
 }
 
 Config readConfig() {
@@ -55,10 +59,15 @@ Config readConfig() {
     return obj;
   }
 
+  final package = config['package'];
   final fileName = config['file_name'];
   final outPath = config['out_path'];
   final className = config['class_name'];
   final jsonName = config['json_name'];
+
+  if (package != null) {
+    obj.package = package;
+  }
 
   if (fileName != null) {
     obj.fileName = fileName;
