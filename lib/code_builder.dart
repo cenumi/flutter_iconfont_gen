@@ -22,7 +22,7 @@ String buildCode(
     ..writeln("static const String _family = '$familyName';")
     ..writeln()
     ..write(indent)
-    ..writeln("static const String _package = '$package;'")
+    ..writeln("static const String _package = '$package';")
     ..writeln();
 
   for (final g in list) {
