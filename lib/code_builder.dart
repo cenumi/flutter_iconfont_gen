@@ -19,9 +19,10 @@ String buildCode(
     ..writeln('$className._();')
     ..writeln()
     ..write(indent)
-    ..writeln('static const String _family = familyName;')
+    ..writeln("static const String _family = '$familyName';")
     ..writeln()
-    ..writeln('static const String _package = $package;')
+    ..write(indent)
+    ..writeln("static const String _package = '$package;'")
     ..writeln();
 
   for (final g in list) {
